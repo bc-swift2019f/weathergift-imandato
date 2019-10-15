@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ddd-le-hSg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wTv-cz-SVX">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -82,7 +82,11 @@
         <!--PageVC-->
         <scene sceneID="96N-KY-vRV">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wTv-cz-SVX" customClass="PageVC" customModule="Weather_Gift_App" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wTv-cz-SVX" customClass="PageVC" customModule="Weather_Gift_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Ddd-le-hSg" kind="presentation" identifier="ToListVC" id="dNn-4O-j0I"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y08-uS-CXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="96" y="-593"/>
@@ -106,14 +110,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iZ9-Fy-kna" kind="unwind" identifier="ToPageVC" unwindAction="unwindFromListVCWithSender:" id="xCq-13-06h"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fah-5q-ZFl">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fah-5q-ZFl">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Edit" id="nEu-0Q-vDj"/>
+                                    <barButtonItem title="Edit" id="nEu-0Q-vDj">
+                                        <connections>
+                                            <action selector="editBarButtonPressed:" destination="Ddd-le-hSg" id="Uyt-0D-T35"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s4v-9E-oI2"/>
                                     <barButtonItem systemItem="add" id="wlL-Xa-An4"/>
                                 </items>
@@ -121,15 +131,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Fah-5q-ZFl" firstAttribute="bottom" secondItem="0d5-X2-B6y" secondAttribute="bottom" id="7vG-KP-1Bp"/>
+                            <constraint firstItem="Fah-5q-ZFl" firstAttribute="leading" secondItem="0d5-X2-B6y" secondAttribute="leading" id="D1R-vj-xyp"/>
                             <constraint firstItem="0d5-X2-B6y" firstAttribute="trailing" secondItem="F9o-wT-aWb" secondAttribute="trailing" constant="16" id="NQi-YC-2w9"/>
                             <constraint firstItem="F9o-wT-aWb" firstAttribute="top" secondItem="gNy-WM-zuW" secondAttribute="top" id="OKT-e7-oS1"/>
                             <constraint firstItem="F9o-wT-aWb" firstAttribute="leading" secondItem="0d5-X2-B6y" secondAttribute="leading" constant="16" id="SyE-NX-udX"/>
                             <constraint firstItem="0d5-X2-B6y" firstAttribute="bottom" secondItem="F9o-wT-aWb" secondAttribute="bottom" constant="44" id="V8F-9Z-jKC"/>
+                            <constraint firstItem="Fah-5q-ZFl" firstAttribute="trailing" secondItem="0d5-X2-B6y" secondAttribute="trailing" id="WT9-rw-WIm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0d5-X2-B6y"/>
                     </view>
+                    <connections>
+                        <outlet property="addBarButton" destination="wlL-Xa-An4" id="wkv-Tp-Q2S"/>
+                        <outlet property="editBarButton" destination="nEu-0Q-vDj" id="o3x-NS-6ni"/>
+                        <outlet property="tableView" destination="F9o-wT-aWb" id="vzK-gc-ZjM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbu-Fb-VH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iZ9-Fy-kna" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="886" y="-573"/>
         </scene>

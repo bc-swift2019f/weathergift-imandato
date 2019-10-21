@@ -26,7 +26,7 @@ class PageVC: UIPageViewController {
         dataSource = self
         
         var newLocation = WeatherLocation()
-        newLocation.name = "Unknown Weather Location"
+        newLocation.name = ""
         locationsArray.append(newLocation)
         
         setViewControllers([createDetailVC(forPage: 0)], direction: .forward, animated: false, completion: nil)
@@ -50,6 +50,7 @@ class PageVC: UIPageViewController {
         pageControl = UIPageControl(frame: CGRect(x: (view.frame.width - pageControlWidth)/2 , y: safeHeight - pageControlHeight, width: pageControlWidth , height: pageControlHeight))
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.black
+        pageControl.backgroundColor = UIColor.white
         pageControl.numberOfPages = locationsArray.count
         pageControl.currentPage = currentPage
         pageControl.addTarget(self, action: #selector(pageControlPressed), for: .touchUpInside)
@@ -74,6 +75,8 @@ class PageVC: UIPageViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let currentViewController = self.viewControllers?[0] as? DetailVC else {return}
+        locationsArray = currentViewController.locationsArray
         if segue.identifier == "ToListVC" {
             let destination = segue.destination as! ListVC
             destination.locationsArray = locationsArray

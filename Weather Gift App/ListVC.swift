@@ -108,12 +108,17 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 //            return proposedDestinationIndexPath
 //        }
         return (proposedDestinationIndexPath.row == 0 ? sourceIndexPath : proposedDestinationIndexPath)
-        
-        func updateTable(place: GMSPlace){
-            let newIndexPath = IndexPath (row: locationsArray.count, section: 0)
-            locationsArray.append(place.name!)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        }
+    }
+    func updateTable(place: GMSPlace){
+        let newIndexPath = IndexPath (row: locationsArray.count, section: 0)
+        var newWeatherLocation = WeatherLocation()
+        newWeatherLocation.name = place.name!
+        let longitude = place.coordinate.longitude
+        let latitude = place.coordinate.latitude
+        newWeatherLocation.coordinates = "\(latitude),\(longitude)"
+        print(newWeatherLocation.coordinates)
+        locationsArray.append(newWeatherLocation)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
 }
 

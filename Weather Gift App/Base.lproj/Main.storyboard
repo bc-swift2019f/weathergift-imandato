@@ -67,7 +67,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HourlyCell" id="hga-lK-Rcw">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HourlyCell" id="hga-lK-Rcw" customClass="HourlyWeatherCell" customModule="Weather_Gift_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -105,11 +105,18 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="hourlyIcon" destination="Nn1-Nb-lwB" id="PHv-ih-xgp"/>
+                                            <outlet property="hourlyPrecipProb" destination="c7y-cU-pOD" id="CZk-j2-Gta"/>
+                                            <outlet property="hourlyTemp" destination="4Gd-OR-TlJ" id="oh8-VT-0j2"/>
+                                            <outlet property="hourlyTime" destination="cHy-9H-6wE" id="jot-6s-a9D"/>
+                                            <outlet property="rainDropImage" destination="OGr-h9-4jt" id="yVs-Wp-Kab"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-Xd-ffK">
-                                <rect key="frame" x="20" y="338" width="382" height="300"/>
+                                <rect key="frame" x="20" y="338" width="382" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DayWeatherCell" rowHeight="80" id="eC4-Z4-RTg" customClass="DayWeatherCell" customModule="Weather_Gift_App" customModuleProvider="target">
@@ -189,7 +196,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lDL-vV-ILA" secondAttribute="trailing" constant="16" id="0yr-TQ-GFH"/>
-                            <constraint firstItem="MaB-Xd-ffK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-224" id="5Q2-QU-G3w"/>
+                            <constraint firstItem="MaB-Xd-ffK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-44" id="5Q2-QU-G3w"/>
                             <constraint firstItem="lEy-TS-cRq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="70N-ZW-2C4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MaB-Xd-ffK" secondAttribute="trailing" constant="12" id="9MN-a8-yEP"/>
                             <constraint firstItem="lEy-TS-cRq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kpu-va-dOs"/>
